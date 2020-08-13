@@ -14,7 +14,13 @@
 
   <body>
     <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if alert.present? %>
+      <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative fixed alert" role="alert">
+        <strong>
+          <%= alert %>
+        </strong>
+      </p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
