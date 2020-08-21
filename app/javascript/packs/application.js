@@ -17,7 +17,9 @@ import '../css/application.css'
 // const imagePath = (name) => images(name, true)
 
 import { initNavbarToggleDropdownPanel } from '../components/navbar';
+import { initAlertClose } from '../components/alert';
 
 document.addEventListener('turbolinks:load', () => {
   initNavbarToggleDropdownPanel();
+  initAlertClose();
 });
