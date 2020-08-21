@@ -18,8 +18,10 @@ import '../css/application.css'
 
 import { initNavbarToggleDropdownPanel } from '../components/navbar';
 import { initAlertClose } from '../components/alert';
+import { initNoticeClose } from '../components/notice';
 
 document.addEventListener('turbolinks:load', () => {
   initNavbarToggleDropdownPanel();
   initAlertClose();
+  initNoticeClose();
 });
