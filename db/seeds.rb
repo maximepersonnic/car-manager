@@ -1,9 +1,14 @@
 # frozen_string_literal: true
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Creation of brands and car_models
+brands_and_models = {
+  'Renault': ['Clio IV'],
+  'Citroën': ['C5']
+}
+
+brands_and_models.each do |brand, car_models|
+  brand = Brand.where(name: brand).first_or_create
+  car_models.each do |car_model|
+    brand.car_models.where(name: car_model).first_or_create
+  end
+end
