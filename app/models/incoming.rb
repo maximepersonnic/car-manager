@@ -1,0 +1,3 @@
+class Incoming < Transaction
+
+end

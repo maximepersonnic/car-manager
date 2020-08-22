@@ -2,41 +2,45 @@
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
       <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+
+        <%= link_to  "add incomings", new_car_incoming_path %>
+        <%= link_to  "add outgoings", new_car_outgoing_path %>
+        <%= @investment_result %>
+
         <table class="min-w-full divide-y divide-gray-200">
           <thead>
             <tr>
               <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                Registration
+                Date
               </th>
               <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                Brand
+                Name
               </th>
               <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                Model
+                Amount
               </th>
               <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                Date of registration
+                Type
               </th>
-              <th class="px-6 py-3 bg-gray-50"></th>
             </tr>
           </thead>
-          <tbody>
-            <% @cars.each_with_index do |car, index| %>
-              <tr class="<%= index.odd? ? 'bg-white' : 'bg-gray-50' %>">
-                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
-                  <%= car.registration %>
+          <tbody class="bg-white divide-y divide-gray-400">
+            <% @transactions.each do |transaction| %>
+              <tr class="<%= transaction.incoming? ? 'bg-green-300' : 'bg-red-300' %>">
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                  <%= transaction.date %>
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-500">
+                  <%= transaction.name %>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                  <%= car.brand_name %>
+                  <%= transaction.amount %>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                  <%= car.car_model_name %>
-                </td>
-                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                  <%= car.date_of_registration %>
+                  <%= transaction.type %>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                  <%= link_to  "Transactions", car_transactions_path(car), class: "text-indigo-600 hover:text-indigo-900" %>
+                  <%= link_to  "delete", transaction_path(transaction), method: :delete, class:"text-indigo-600 hover:text-indigo-900", data: { confirm: "Sure?" } %>
                 </td>
               </tr>
             <% end %>

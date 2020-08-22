@@ -1,0 +1,3 @@
+class Outgoing < Transaction
+
+end
