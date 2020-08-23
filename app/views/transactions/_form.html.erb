@@ -1,15 +1,8 @@
-<%= form_for [car, transaction] do |f| %>
-  <%= f.label :name, class:"block text-sm font-medium leading-5 text-gray-700" %>
-  <%= f.text_field :name, class:"form-input block w-full sm:text-sm sm:leading-5" %>
-
-  <%= f.label :description, class:"block text-sm font-medium leading-5 text-gray-700" %>
-  <%= f.text_area :description, class:"form-input block w-full sm:text-sm sm:leading-5" %>
-
-  <%= f.label :date, class:"block text-sm font-medium leading-5 text-gray-700" %>
-  <%= f.date_field :date, class:"form-input block w-full sm:text-sm sm:leading-5" %>
-
-  <%= f.label :amount, class:"block text-sm font-medium leading-5 text-gray-700" %>
-  <%= f.number_field :amount, step: :any, class:"form-input block w-full sm:text-sm sm:leading-5" %>
-
-  <%= f.submit %>
+<%= simple_form_for [car, transaction] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :date, html5: true %>
+  <%= f.input :amount %>
+  <%= f.button :submit_cancel, cancel: car_transactions_path(car) %>
 <% end %>
+
