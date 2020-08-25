@@ -10,8 +10,10 @@ Rails.application.routes.draw do
     resources :incomings, only: [:new, :create]
     resources :outgoings, only: [:new, :create]
     resources :mileages, only: [:new, :create]
+    resources :maintenances, only: [:index, :new, :create]
   end
 
+  resources :maintenances, only: :destroy
   resources :operations, only: [:index, :new, :create, :destroy]
   resources :transactions, only: :destroy
 end

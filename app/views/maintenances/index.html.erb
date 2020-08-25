@@ -1,0 +1,10 @@
+<h1>Maintenances#index</h1>
+
+<%= link_to  "Create Maintenance", new_car_maintenance_path(@car) %>
+
+<ul>
+  <% @maintenances.each do |maintenance| %>
+    <%= maintenance.description %>
+    <%= link_to "delete", maintenance, method: :delete, data: { confirm: "Sure?" } %>
+  <% end %>
+</ul>

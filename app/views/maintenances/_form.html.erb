@@ -1,0 +1,9 @@
+<%= simple_form_for [car, maintenance] do |f| %>
+  <%= f.input :description %>
+  <%= f.input :date, html5: true %>
+  <%= f.simple_fields_for :mileage, Mileage.new do |m| %>
+    <%= m.input :value %>
+  <% end %>
+  <%= f.button :submit_cancel, cancel: car_maintenances_path(car) %>
+<% end %>
+
