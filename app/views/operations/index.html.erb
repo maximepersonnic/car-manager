@@ -1,0 +1,10 @@
+<%= link_to  "Create operation", new_operation_path %>
+
+<ul>
+  <% @operation.each do |operation| %>
+    <li>
+      <%= operation.title %>
+      <%= link_to  "delete", operation, method: :delete, data: { confirm: "Sure?" } %>
+    </li>
+  <% end %>
+</ul>

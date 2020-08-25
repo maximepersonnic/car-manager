@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     resources :mileages, only: [:new, :create]
   end
 
+  resources :operations, only: [:index, :new, :create, :destroy]
   resources :transactions, only: :destroy
 end
