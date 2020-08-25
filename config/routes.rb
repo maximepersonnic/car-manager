@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :transactions, only: :index
     resources :incomings, only: [:new, :create]
     resources :outgoings, only: [:new, :create]
+    resources :mileages, only: [:new, :create]
   end
 
   resources :transactions, only: :destroy
