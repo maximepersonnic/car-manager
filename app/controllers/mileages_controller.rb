@@ -8,6 +8,7 @@ class MileagesController < ApplicationController
   def create
     @mileage = Mileage.new(mileage_params)
     @mileage.car = @car
+    @mileage.statement_date = Time.zone.now
 
     if @mileage.save
       redirect_to cars_path
