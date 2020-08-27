@@ -14,6 +14,7 @@ class MaintenancesController < ApplicationController
     @maintenance = Maintenance.new(maintenance_params)
     @maintenance.car = @car
     @maintenance.mileage.car = @car
+    @maintenance.mileage.statement_date = maintenance_params[:date]
 
     if @maintenance.save
       redirect_to car_maintenances_path(@car)
@@ -36,6 +37,7 @@ class MaintenancesController < ApplicationController
       .permit(
         :description,
         :date,
+        operation_ids: [],
         mileage_attributes: :value
       )
   end

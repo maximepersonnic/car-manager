@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_181112) do
+ActiveRecord::Schema.define(version: 2020_08_27_184240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 2020_08_27_181112) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["car_id"], name: "index_maintenances_on_car_id"
     t.index ["mileage_id"], name: "index_maintenances_on_mileage_id"
+  end
+
+  create_table "maintenances_operations", force: :cascade do |t|
+    t.bigint "operation_id", null: false
+    t.bigint "maintenance_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["maintenance_id"], name: "index_maintenances_operations_on_maintenance_id"
+    t.index ["operation_id"], name: "index_maintenances_operations_on_operation_id"
   end
 
   create_table "mileages", force: :cascade do |t|
@@ -92,6 +101,8 @@ ActiveRecord::Schema.define(version: 2020_08_27_181112) do
   add_foreign_key "cars", "car_models"
   add_foreign_key "maintenances", "cars"
   add_foreign_key "maintenances", "mileages"
+  add_foreign_key "maintenances_operations", "maintenances"
+  add_foreign_key "maintenances_operations", "operations"
   add_foreign_key "mileages", "cars"
   add_foreign_key "transactions", "cars"
 end

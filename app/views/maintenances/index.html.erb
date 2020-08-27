@@ -4,7 +4,12 @@
 
 <ul>
   <% @maintenances.each do |maintenance| %>
-    <%= maintenance.description %>
+    <p><%= maintenance.description %></p>
+    <ul>
+      <% maintenance.operations.each do |operation| %>
+        <li><%= operation.title %></li>
+      <% end %>
+    </ul>
     <%= link_to "delete", maintenance, method: :delete, data: { confirm: "Sure?" } %>
   <% end %>
 </ul>

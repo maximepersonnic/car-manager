@@ -4,6 +4,7 @@
   <%= f.simple_fields_for :mileage, Mileage.new do |m| %>
     <%= m.input :value %>
   <% end %>
+  <%= f.collection_check_boxes :operation_ids, Operation.all, :id, :title %>
   <%= f.button :submit_cancel, cancel: car_maintenances_path(car) %>
 <% end %>
 
