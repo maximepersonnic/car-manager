@@ -11,7 +11,7 @@ class MileagesController < ApplicationController
     @mileage.statement_date = Time.zone.now
 
     if @mileage.save
-      redirect_to cars_path
+      redirect_to root_path
     else
       render :new
     end

@@ -3,9 +3,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root to: 'pages#home'
+  root to: 'cars#index'
 
-  resources :cars, only: :index do
+  resources :cars, only: [] do
     resources :transactions, only: :index
     resources :incomings, only: [:new, :create]
     resources :outgoings, only: [:new, :create]
