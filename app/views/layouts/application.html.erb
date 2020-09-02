@@ -16,7 +16,7 @@
     <%= render 'shared/notice' %>
     <%= render 'shared/alert' %>
     <%= render 'shared/navbar' %>
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-5">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 <%= 'py-5' if user_signed_in? %> ">
       <%= yield %>
     </div>
   </body>
