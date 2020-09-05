@@ -37,10 +37,10 @@
           <tbody>
             <% @mileages.each_with_index do |mileage, index| %>
               <tr class="<%= index.even? ? 'bg-white' : 'bg-gray-50' %>">
-                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
                   <%= l(mileage.statement_date, format: :long) %>
                 </td>
-                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
                   <%= mileage.value %>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium flex space-x-4"">
