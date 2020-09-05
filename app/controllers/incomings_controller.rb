@@ -3,6 +3,8 @@ class IncomingsController < TransactionsController
     @incoming = Incoming.new
     @incoming.car = @car
     authorize @incoming, policy_class: TransactionPolicy
+
+    @breadcrumbs << [ 'New incoming' ]
   end
 
   def create
