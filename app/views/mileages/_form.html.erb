@@ -1,0 +1,4 @@
+<%= simple_form_for [car, mileage] do |f| %>
+  <%= f.input :value, input_html: { min: 0 } %>
+  <%= f.button :submit_cancel, cancel: root_path %>
+<% end %>

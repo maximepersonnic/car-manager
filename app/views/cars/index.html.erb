@@ -25,7 +25,7 @@
           </thead>
           <tbody>
             <% @cars.each_with_index do |car, index| %>
-              <tr class="<%= index.odd? ? 'bg-white' : 'bg-gray-50' %>">
+              <tr class="<%= index.even? ? 'bg-white' : 'bg-gray-50' %>">
                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
                   <%= car.registration %>
                 </td>
@@ -39,7 +39,7 @@
                   <%= car.date_of_registration %>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                  <%= link_to car.mileage_value || '', new_car_mileage_path(car), class: "text-indigo-600 hover:text-indigo-900" %>
+                  <%= link_to car.mileage_value || '', car_mileages_path(car), class: "text-indigo-600 hover:text-indigo-900" %>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium flex space-x-4"">
                   <%= link_to  car_transactions_path(car), class: "text-indigo-600 hover:text-indigo-900" do %>

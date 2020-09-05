@@ -7,6 +7,10 @@ class CarPolicy < ApplicationPolicy
     children_index?
   end
 
+  def mileages_index?
+    children_index?
+  end
+
   class Scope < Scope
     def resolve
       scope.where(user: user)
