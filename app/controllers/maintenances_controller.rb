@@ -1,18 +1,25 @@
 class MaintenancesController < ApplicationController
   before_action :set_car, only: [:index, :new, :create]
   before_action :set_maintenance, only: :destroy
+  before_action :skip_policy_scope, only: :index
 
   def index
     @maintenances = @car.maintenances
+
+    authorize @car, :maintenances_index?
   end
 
   def new
     @maintenance = Maintenance.new
+    @maintenance.car = @car
+    authorize @maintenance
   end
 
   def create
     @maintenance = Maintenance.new(maintenance_params)
     @maintenance.car = @car
+    authorize @maintenance
+
     @maintenance.mileage.car = @car
     @maintenance.mileage.statement_date = maintenance_params[:date]
 
@@ -48,5 +55,6 @@ class MaintenancesController < ApplicationController
 
   def set_maintenance
     @maintenance = Maintenance.find(params[:id])
+    authorize @maintenance
   end
 end

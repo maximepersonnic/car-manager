@@ -3,11 +3,15 @@ class MileagesController < ApplicationController
 
   def new
     @mileage = Mileage.new
+    @mileage.car = @car
+    authorize @mileage
   end
 
   def create
     @mileage = Mileage.new(mileage_params)
     @mileage.car = @car
+    authorize @mileage
+
     @mileage.statement_date = Time.zone.now
 
     if @mileage.save

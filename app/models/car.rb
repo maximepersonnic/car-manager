@@ -1,5 +1,6 @@
 class Car < ApplicationRecord
   belongs_to :car_model
+  belongs_to :user
   has_many :transactions
   has_many :incomings
   has_many :outgoings

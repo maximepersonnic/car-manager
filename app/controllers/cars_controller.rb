@@ -1,5 +1,5 @@
 class CarsController < ApplicationController
   def index
-    @cars = Car.all
+    @cars = policy_scope(Car)
   end
 end
