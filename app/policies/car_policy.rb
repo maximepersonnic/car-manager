@@ -1,4 +1,20 @@
 class CarPolicy < ApplicationPolicy
+  def new?
+    create?
+  end
+
+  def create?
+    true
+  end
+
+  def edit?
+    create?
+  end
+
+  def update?
+    create?
+  end
+
   def transactions_index?
     children_index?
   end

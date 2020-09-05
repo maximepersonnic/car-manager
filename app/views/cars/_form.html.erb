@@ -1,0 +1,6 @@
+<%= simple_form_for car do |f| %>
+  <%= f.input :registration %>
+  <%= f.input :date_of_registration, html5: true %>
+  <%= f.association :car_model %>
+  <%= f.button :submit_cancel, cancel: root_path %>
+<% end %>

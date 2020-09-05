@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   root to: 'cars#index'
 
-  resources :cars, only: [] do
+  resources :cars, only: [:new, :create, :edit, :update] do
     resources :transactions, only: :index
     resources :incomings, only: [:new, :create]
     resources :outgoings, only: [:new, :create]

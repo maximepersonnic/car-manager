@@ -16,8 +16,10 @@ module BreadcrumbsHelper
   def back_link(breadcrumbs)
     breadcrumbs_last_index = breadcrumbs.size - 1
 
-    breadcrumbs.select.with_index do |a, index|
-      a.size == 2 && index < breadcrumbs_last_index
-    end.last.last
+    breadcrumbs_with_path = breadcrumbs.select.with_index do |a, index|
+      a.size == 2
+    end
+
+    breadcrumbs_with_path[-2]&.last&.last || breadcrumbs_with_path.last.last
   end
 end
