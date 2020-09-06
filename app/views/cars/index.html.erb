@@ -43,6 +43,9 @@
               <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                 Transaction
               </th>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Maintenance
+              </th>
               <th class="px-6 py-3 bg-gray-50"></th>
             </tr>
           </thead>
@@ -71,12 +74,14 @@
                     </span>
                   <% end %>
                 </td>
-                <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium flex space-x-4"">
-                  <%= link_to new_car_maintenance_path(car), class: "text-indigo-600 hover:text-indigo-900" do %>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
-                    </svg>
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                  <%= link_to car_maintenances_path(car) do %>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-green-100 text-green-800 %>">
+                      up to date
+                    </span>
                   <% end %>
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium flex space-x-4"">
                   <%= link_to edit_car_path(car), class: "text-indigo-600 hover:text-indigo-900" do %>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>

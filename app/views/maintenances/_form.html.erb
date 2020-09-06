@@ -1,10 +1,29 @@
 <%= simple_form_for [car, maintenance] do |f| %>
   <%= f.input :description %>
   <%= f.input :date, html5: true %>
-  <%= f.simple_fields_for :mileage, Mileage.new do |m| %>
-    <%= m.input :value %>
+  <%= f.simple_fields_for :mileage, mileage do |m| %>
+    <%= m.input :value, label: "Mileage" %>
   <% end %>
-  <%= f.collection_check_boxes :operation_ids, Operation.all, :id, :title %>
+
+  <div class="mt-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+    <label for="" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2 date optional">
+      Operation
+    </label>
+    <div>
+      <%= f.collection_check_boxes :operation_ids, Operation.all, :id, :title do |b| %>
+        <div class="mt-4">
+          <div class="flex items-start">
+            <div class="flex items-center h-5">
+              <%= b.check_box(class: "form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out") %>
+            </div>
+            <div class="ml-3 text-sm leading-5">
+              <%= b.label(class: "font-medium text-gray-700") %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
   <%= f.button :submit_cancel, cancel: car_maintenances_path(car) %>
 <% end %>
-

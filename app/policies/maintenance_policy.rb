@@ -7,6 +7,14 @@ class MaintenancePolicy < ApplicationPolicy
     record.car.user == user
   end
 
+  def edit?
+    create?
+  end
+
+  def update?
+    create?
+  end
+
   def destroy?
     create?
   end
