@@ -5,7 +5,7 @@ class Car < ApplicationRecord
   has_many :incomings
   has_many :outgoings
   has_many :mileages, -> { order statement_date: :desc}
-  has_many :maintenances
+  has_many :maintenances, -> { order date: :desc}
   has_one :mileage, -> { order statement_date: :desc}
 
   validates :registration, :date_of_registration, presence: true
