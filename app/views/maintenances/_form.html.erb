@@ -8,9 +8,16 @@
   <div class="mt-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
     <label for="" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2 date optional">
       Operation
+      <%= link_to new_car_operation_path(@car) do %>
+        <span class="ml-3 shadow-sm rounded-md">
+          <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
+            New operation
+          </button>
+        </span>
+      <% end %>
     </label>
     <div>
-      <%= f.collection_check_boxes :operation_ids, Operation.all, :id, :title do |b| %>
+      <%= f.collection_check_boxes :operation_ids, @operations, :id, :title do |b| %>
         <div class="mt-4">
           <div class="flex items-start">
             <div class="flex items-center h-5">

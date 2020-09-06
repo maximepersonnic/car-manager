@@ -1,5 +1,5 @@
-<%= simple_form_for operation do |f| %>
+<%= simple_form_for [car, operation] do |f| %>
   <%= f.input :title %>
-  <%= f.button :submit_cancel, cancel: operations_path %>
+  <%= f.button :submit_cancel, cancel: car_operations_path %>
 <% end %>
 

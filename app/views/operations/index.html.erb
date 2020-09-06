@@ -1,10 +1,46 @@
-<%= link_to  "Create operation", new_operation_path %>
+<div>
+  <%= render 'shared/breadcrumbs', breadcrumbs: @breadcrumbs %>
 
-<ul>
-  <% @operation.each do |operation| %>
-    <li>
-      <%= operation.title %>
-      <%= link_to  "delete", operation, method: :delete, data: { confirm: "Sure?" } %>
-    </li>
-  <% end %>
-</ul>
+  <div class="mt-2 md:flex md:items-center md:justify-between">
+    <div class="flex-1 min-w-0">
+      <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
+        Operations
+      </h2>
+    </div>
+    <div class="mt-4 flex-shrink-0 flex md:mt-0 md:ml-4">
+    <%= link_to new_car_operation_path(@car) do %>
+      <span class="ml-3 shadow-sm rounded-md">
+        <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out">
+          New operation
+        </button>
+      </span>
+    <% end %>
+  </div>
+</div>
+
+<div class="flex flex-col mt-8">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead>
+            <tr>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Title
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @operations.each_with_index do |operation, index| %>
+              <tr class="<%= index.even? ? 'bg-white' : 'bg-gray-50' %>">
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                  <%= operation.title %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@ class MaintenancesController < ApplicationController
   before_action :set_car, only: [:index, :new, :create, :edit, :update]
   before_action :set_maintenance, only: [:edit, :update, :destroy]
   before_action :set_breadcrumbs, only: [:index, :new, :create, :edit, :update]
+  before_action :set_operations, only: [:new, :edit]
 
   before_action :skip_policy_scope, only: :index
 
@@ -83,5 +84,9 @@ class MaintenancesController < ApplicationController
     @breadcrumbs << [ 'Cars', root_path ]
     @breadcrumbs << [ @car.registration ]
     @breadcrumbs << [ 'Maintenances', car_maintenances_path(@car) ]
+  end
+
+  def set_operations
+    @operations = current_user.operations
   end
 end
